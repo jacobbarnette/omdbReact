@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import React, { Component } from 'react' 
+import SearchBar from './components/SearchBar'
+import MovieResult from './components/MovieResult'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+   state={response: null}
+    onSearchSubmit = async term => {
+        const response = await axios.get(`http://www.omdbapi.com/?t=${term}&apikey=a15611a8`)
+        this.setState({ response: response })
+      
+    }
+    
+    render() {
+       return (
+           <div className="ui container">
+               <SearchBar onSubmit={this.onSearchSubmit} />
+                <MovieResult searchResult={this.state.response} />
+           </div>
+       )
+    }
+    
 }
-
-export default App;
+export default App

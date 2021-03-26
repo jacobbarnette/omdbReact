@@ -1,0 +1,24 @@
+body {
+    font-size: 1.2em;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 1%;
+    font-size: 2em;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    grid-gap: 10px;
+    margin: 2%;
+}
+
+img {
+  width: 100%;
+}
+
+.rowHeader {
+    font-weight: bold;
+}
